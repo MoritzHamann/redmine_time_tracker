@@ -1,6 +1,6 @@
 <%# time_tracker = nil %>
-<% time_tracker = time_tracker_for(User.current) %>
-<% if !time_tracker.nil? %>
+<% time_tracker = (respond_to? 'time_tracker_for') && time_tracker_for(User.current) %>
+<% if time_tracker %>
     <% if time_tracker.paused %>
         <%# A time tracker is in pause, display the tracked issue, the time spent and the resume/stop actions %>
         <%= link_to '#' + time_tracker.issue_id.to_s,

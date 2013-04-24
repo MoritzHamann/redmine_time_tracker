@@ -1,5 +1,5 @@
-<% time_tracker = time_tracker_for(User.current) %>
-<% if !time_tracker.nil? %>
+<% time_tracker = (respond_to? 'time_tracker_for') && time_tracker_for(User.current) %>
+<% if time_tracker %>
     <% if time_tracker.paused %>
         <%# A time tracker is paused, display the resume action %>
         <li>
